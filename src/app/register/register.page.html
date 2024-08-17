@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>register</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+​​<ion-content [fullscreen]="true">
+  <ion-item>
+    <ion-label position="floating">Name</ion-label>
+    <ion-input [(ngModel)]="name" type="text"></ion-input>
+  </ion-item>
+ 
+  <ion-item>
+    <ion-label position="floating">Email</ion-label>
+    <ion-input [(ngModel)]="email" type="email"></ion-input>
+  </ion-item>
+ 
+  <ion-item>
+    <ion-label position="floating">Password</ion-label>
+    <ion-input [(ngModel)]="password" type="password"></ion-input>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label>Profile Image</ion-label>
+    <ion-button (click)="captureImage()">Capture Image</ion-button>
+  </ion-item>
+ 
+  <ion-img *ngIf="profileImage" [src]="profileImage" class="profile-img"></ion-img>
+ 
+  <ion-button expand="full" (click)="register()">Register</ion-button>
+
+ </ion-content>
+ 

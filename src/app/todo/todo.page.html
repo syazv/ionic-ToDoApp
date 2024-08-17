@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>todo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-item>
+    <img [src]="user?.photoURL" alt="" slot="start" *ngIf="user?.photoURL" class="profile-thumbnail">
+    <h2>Hello {{user?.displayName}}</h2>
+  </ion-item>
+ 
+  <ion-item>
+    <ion-input [(ngModel)]="newTask" placeholder="Enter a new task"></ion-input>
+    <ion-button (click)="addTask()" expand="full">Add</ion-button>
+  </ion-item>
+ 
+  <ion-list>
+    <ion-item *ngFor="let task of tasks$ | async">
+      <ion-label [class.completed]="task.completed">{{ task.task }}</ion-label>
+      <ion-checkbox slot="start" [(ngModel)]="task.completed" (ionChange)="updateTask(task.id, task.completed)"></ion-checkbox>
+      <ion-button slot="end" color="danger" (click)="deleteTask(task.id)">Delete</ion-button>
+    </ion-item>
+  </ion-list> 
+</ion-content>
